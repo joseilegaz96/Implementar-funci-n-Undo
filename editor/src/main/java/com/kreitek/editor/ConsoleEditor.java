@@ -3,6 +3,8 @@ package com.kreitek.editor;
 import com.kreitek.editor.commands.CommandFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ConsoleEditor implements Editor {
@@ -17,7 +19,9 @@ public class ConsoleEditor implements Editor {
     public static final String TEXT_WHITE = "\u001B[37m";
 
     private final CommandFactory commandFactory = new CommandFactory();
-    private ArrayList<String> documentLines = new ArrayList<String>();
+    private static ArrayList<String> documentLines = new ArrayList<String>();
+
+    private  Caretaker caretaker;
 
     @Override
     public void run() {
@@ -84,4 +88,9 @@ public class ConsoleEditor implements Editor {
         System.out.print(message);
     }
 
+    public static Memento getState() {
+        Map<String,Object> estado = new HashMap<>();
+        estado.put("Linea texto",new ArrayList<>(documentLines));
+        return new Memento(estado);
+    }
 }

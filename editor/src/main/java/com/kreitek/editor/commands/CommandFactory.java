@@ -2,6 +2,10 @@ package com.kreitek.editor.commands;
 
 import com.kreitek.editor.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class CommandFactory {
     private static final CommandParser commandParser = new CommandParser();
 
@@ -17,8 +21,7 @@ public class CommandFactory {
     }
 
     private Command createUndoCommand() {
-        // TODO create undo command
-        return null;
+        return new  CommandUndo();
     }
 
     private Command createDeleteCommand(String lineNumber) {
