@@ -10,7 +10,6 @@ public class AppendCommand implements Command {
     private final String text;
     private  Caretaker caretaker = new Caretaker();
 
-
     public AppendCommand(String text) {
         this.text = text;
     }
